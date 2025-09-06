@@ -95,7 +95,3 @@ If using a remote backend, you may also want to delete the state storage manuall
 
 ---
 ---
-
-Would you like help customizing it further—like adding specific Azure resources, workflow triggers, or troubleshooting instructions? Let me know!
-::contentReference[oaicite:1]{index=1}
-```
