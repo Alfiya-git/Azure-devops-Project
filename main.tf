@@ -1,6 +1,6 @@
 # Resource Group
 resource "azurerm_resource_group" "rg" {
-  name     = "demo-${var.environment}-rg"
+  name     = "demo-${var.env}-rg"
   location = var.location_primary
 }
 
@@ -9,14 +9,14 @@ module "cosmos" {
   source              = "./modules/cosmos_db"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-  account_name        = "democosmos${var.environment}"
+  account_name        = "democosmos${var.env}"
   geo_locations       = [var.location_secondary]
 }
 
 # App Insights
 module "ai" {
   source              = "./modules/app_insights"
-  name                = "demo-ai-${var.environment}"
+  name                = "demo-ai-${var.env}"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 }
@@ -24,7 +24,7 @@ module "ai" {
 # Function App
 module "func" {
   source               = "./modules/function_app"
-  name                 = "demo-func-${var.environment}"
+  name                 = "demo-func-${var.env}"
   location             = azurerm_resource_group.rg.location
   resource_group_name  = azurerm_resource_group.rg.name
   storage_account_name = "demofuncsa${var.environment}"
