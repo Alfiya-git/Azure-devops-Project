@@ -23,7 +23,7 @@ jobs:
           terraform_version: ${{ env.TF_VERSION }}
 
       - name: Terraform Init
-        run: terraform -chdir=${{ env.WORKING_DIR }} init -input=false
+        run: terraform -chdir=${{ env.WORKING_DIR }} init -backend-config=backend.hcl -input=false
 
       - name: Terraform Validate
         run: terraform -chdir=${{ env.WORKING_DIR }} validate
