@@ -22,6 +22,9 @@ jobs:
         with:
           terraform_version: ${{ env.TF_VERSION }}
 
+      - name: Check backend file
+        run: ls -l ${{ env.WORKING_DIR }}/backend.hcl
+
       - name: Terraform Init
         run: terraform -chdir=${{ env.WORKING_DIR }} init -backend-config=backend.hcl -input=false
         env:
