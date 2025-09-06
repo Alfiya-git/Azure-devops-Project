@@ -27,7 +27,7 @@ module "func" {
   name                 = "demo-func-${var.env}"
   location             = azurerm_resource_group.rg.location
   resource_group_name  = azurerm_resource_group.rg.name
-  storage_account_name = "demofuncsa${var.environment}"
+  storage_account_name = "demofuncsa${var.env}"
   app_settings = {
     "APPINSIGHTS_INSTRUMENTATIONKEY" = module.ai.ikey
     "COSMOS_ENDPOINT"                = module.cosmos.endpoint
