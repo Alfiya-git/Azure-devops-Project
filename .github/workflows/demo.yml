@@ -14,7 +14,7 @@ jobs:
   deploy-staging:
     runs-on: ubuntu-latest
     environment: staging
-    if: github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/staging'
     steps:
       - uses: actions/checkout@v4
 
@@ -40,13 +40,13 @@ jobs:
           ARM_SUBSCRIPTION_ID: ${{ fromJson(secrets.AZURE_CREDENTIALS).subscriptionId }}
           ARM_TENANT_ID: ${{ fromJson(secrets.AZURE_CREDENTIALS).tenantId }}
 
-      - name: Terraform Apply (staging)
-        run: terraform -chdir=${{ env.WORKING_DIR }} apply -auto-approve tfplan-staging
-        env:
-          ARM_CLIENT_ID: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientId }}
-          ARM_CLIENT_SECRET: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientSecret }}
-          ARM_SUBSCRIPTION_ID: ${{ fromJson(secrets.AZURE_CREDENTIALS).subscriptionId }}
-          ARM_TENANT_ID: ${{ fromJson(secrets.AZURE_CREDENTIALS).tenantId }}
+      # - name: Terraform Apply (staging)
+      #   run: terraform -chdir=${{ env.WORKING_DIR }} apply -auto-approve tfplan-staging
+      #   env:
+      #     ARM_CLIENT_ID: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientId }}
+      #     ARM_CLIENT_SECRET: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientSecret }}
+      #     ARM_SUBSCRIPTION_ID: ${{ fromJson(secrets.AZURE_CREDENTIALS).subscriptionId }}
+      #     ARM_TENANT_ID: ${{ fromJson(secrets.AZURE_CREDENTIALS).tenantId }}
 
 
   deploy-prod:
