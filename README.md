@@ -92,6 +92,3 @@ If using a remote backend, you may also want to delete the state storage manuall
 2. Create a feature branch: `git checkout -b feature/my-change`.
 3. Make your changes and update documentation as needed.
 4. Commit, push, and open a Pull Request.
-
----
----
