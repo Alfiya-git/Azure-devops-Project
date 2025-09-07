@@ -29,8 +29,7 @@ jobs:
           terraform_version: ${{ env.TF_VERSION }}
 
       - name: Terraform Init (staging)
-        run: terraform -chdir=${{ env.WORKING_DIR }} init \
-          -backend-config="key=staging.tfstate"
+        run: terraform -chdir=${{ env.WORKING_DIR }} init -backend-config="key=staging.tfstate"
 
       - name: Terraform Plan (staging)
         run: terraform -chdir=${{ env.WORKING_DIR }} plan -out=tfplan-staging -var="env=staging"
@@ -68,8 +67,7 @@ jobs:
           terraform_version: ${{ env.TF_VERSION }}
 
       - name: Terraform Init (prod)
-        run: terraform -chdir=${{ env.WORKING_DIR }} init \
-          -backend-config="key=prod.tfstate"
+        run: terraform -chdir=${{ env.WORKING_DIR }} init -backend-config="key=prod.tfstate"
 
       - name: Terraform Plan (prod)
         run: terraform -chdir=${{ env.WORKING_DIR }} plan -out=tfplan-prod -var="env=prod"
